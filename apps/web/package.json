@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "start": "",
-    "build": ""
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build"
   },
   "private": true,
   "license": "MIT",

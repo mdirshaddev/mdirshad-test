@@ -12,5 +12,9 @@
     "name": "Md Irshad",
     "email": "mdirshaddev+gitihub@gmail.com",
     "url": "https://github.com/mdirshaddev/mdirshad"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.6",
+    "typescript": "^5.2.2"
   }
 }

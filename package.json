@@ -1,0 +1,16 @@
+{
+  "name": "mdirshad",
+  "description": "",
+  "scripts": {
+    "start": "",
+    "build": ""
+  },
+  "private": true,
+  "keywords": [],
+  "license": "MIT",
+  "author": {
+    "name": "Md Irshad",
+    "email": "mdirshaddev+gitihub@gmail.com",
+    "url": "https://github.com/mdirshaddev/mdirshad"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": ["plugin:canonical/recommended", "next/core-web-vitals"],
+  "plugins": ["canonical"],
+  "rules": {
+    "canonical/filename-match-exported": 0,
+    "canonical/filename-match-regex": 0,
+    "canonical/filename-no-index": 0,
+    "canonical/id-match": [
+      2,
+      "(^[A-Za-z]+(?:[A-Z][a-z]*)*\\d*$)|(^[A-Z]+(_[A-Z]+)*(_\\d$)*$)|(^(_|\\$)$)",
+      {
+        "ignoreDestructuring": true,
+        "ignoreNamedImports": true,
+        "onlyDeclarations": true,
+        "properties": true
+      }
+    ],
+    "canonical/no-restricted-strings": 0,
+    "canonical/no-use-extend-native": 2,
+    "canonical/prefer-inline-type-import": 2,
+    "canonical/sort-keys": [
+      2,
+      "asc",
+      {
+        "caseSensitive": false,
+        "natural": true
+      }
+    ],
+    "object-curly-newline": [
+      "off",
+      {
+        "ExportDeclaration": "always"
+      }
+    ],
+    "canonical/export-specifier-newline": "off",
+    "canonical/import-specifier-newline": "off"
+  }
+}

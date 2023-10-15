@@ -1,0 +1,35 @@
+{
+  "name": "web",
+  "homepage": "https://mdirshad.vercel.app",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build"
+  },
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Md Irshad",
+    "email": "mdirshaddev+gitihub@gmail.com",
+    "url": "https://github.com/mdirshaddev/mdirshad"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^1.0.3",
+    "@prisma/client": "^5.4.2",
+    "next": "^13.5.4",
+    "next-auth": "^4.23.2",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.6",
+    "@types/react": "^18.2.28",
+    "@typescript-eslint/parser": "^6.7.5",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^13.5.4",
+    "eslint-plugin-canonical": "^4.15.1",
+    "prisma": "^5.4.2",
+    "typescript": "^5.2.2"
+  }
+}

@@ -3,7 +3,8 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
@@ -12,5 +13,7 @@
     "**/*.d.ts",
     ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

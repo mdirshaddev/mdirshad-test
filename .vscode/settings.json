@@ -40,5 +40,6 @@
     "editor.maxTokenizationLineLength": 2500,
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "docwriter.style": "Auto-detect"
 }

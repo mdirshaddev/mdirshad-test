@@ -46,8 +46,8 @@ registerRoute(
     cacheName: "start-url",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 1,
         maxAgeSeconds: 86400,
+        maxEntries: 1,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -61,8 +61,8 @@ registerRoute(
     cacheName: "google-fonts",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 4,
         maxAgeSeconds: 31536e3,
+        maxEntries: 4,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -76,8 +76,8 @@ registerRoute(
     cacheName: "static-font-assets",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 4,
         maxAgeSeconds: 604800,
+        maxEntries: 4,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -92,8 +92,8 @@ registerRoute(
     cacheName: "static-image-assets",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 64,
         maxAgeSeconds: 86400,
+        maxEntries: 64,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -107,8 +107,8 @@ registerRoute(
     cacheName: "static-js-assets",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 32,
         maxAgeSeconds: 86400,
+        maxEntries: 32,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -122,8 +122,8 @@ registerRoute(
     cacheName: "static-style-assets",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 32,
         maxAgeSeconds: 86400,
+        maxEntries: 32,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -137,8 +137,8 @@ registerRoute(
     cacheName: "static-data-assets",
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 32,
         maxAgeSeconds: 86400,
+        maxEntries: 32,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -153,8 +153,8 @@ registerRoute(
     networkTimeoutSeconds: 10,
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 16,
         maxAgeSeconds: 86400,
+        maxEntries: 16,
         purgeOnQuotaError: !0,
       }),
     ],
@@ -169,8 +169,8 @@ registerRoute(
     networkTimeoutSeconds: 10,
     plugins: [
       new ExpirationPlugin({
-        maxEntries: 32,
         maxAgeSeconds: 86400,
+        maxEntries: 32,
         purgeOnQuotaError: !0,
       }),
     ],

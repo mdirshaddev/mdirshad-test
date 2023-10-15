@@ -8,20 +8,20 @@ import { WebVitals } from "./web-vitals";
 import { RootProvider } from "./root-provider";
 
 export const metadata: Metadata = {
-  title: "Md Irshad - 🐋 Software Developer",
-  description: "Building things for better future",
-  colorScheme: "dark",
   category: "Personal Website",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
+  colorScheme: "dark",
+  description: "Building things for better future",
   icons: {
+    apple: "/apple-touch-icon.png",
     icon: "/favicon.ico",
     shortcut: ["/favicon-16x16.png", "/favicon-32x32.png"],
-    apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.webmanifest",
+  themeColor: [
+    { color: "white", media: "(prefers-color-scheme: light)" },
+    { color: "black", media: "(prefers-color-scheme: dark)" },
+  ],
+  title: "Md Irshad - 🐋 Software Developer",
 };
 
 export default function RootLayout(props: React.PropsWithChildren) {

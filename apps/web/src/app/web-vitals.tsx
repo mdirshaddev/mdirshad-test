@@ -19,11 +19,13 @@ export const WebVitals = () => {
     // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics/pages/_app.js
     if (window?.gtag) {
       window?.gtag("event", metric.name, {
+        // values must be integers
+        event_label: metric.id,
+        // id unique to current page load
+        non_interaction: true,
         value: Math.round(
           metric.name === "CLS" ? metric.value * 1000 : metric.value
-        ), // values must be integers
-        event_label: metric.id, // id unique to current page load
-        non_interaction: true, // avoids affecting bounce rate.
+        ), // avoids affecting bounce rate.
       });
     } else {
       console.log(metric);

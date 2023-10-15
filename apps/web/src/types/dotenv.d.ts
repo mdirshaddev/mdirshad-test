@@ -5,5 +5,12 @@ declare module NodeJS {
 
     // Microsoft Clarity
     NEXT_PUBLIC_MICROSOFT_CLARITY: string;
+
+    //GitHub OAuth Client ID and Secret
+    GITHUB_ID: string;
+    GITHUB_SECRET: string;
+
+    // Next Auth
+    NEXTAUTH_SECRET: string;
   }
 }

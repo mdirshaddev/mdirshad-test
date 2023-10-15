@@ -7,6 +7,7 @@ import { nextPrismaClient } from "src/modules/prisma/prisma-client";
 to configure the authentication options for NextAuth. */
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(nextPrismaClient),
+  debug: process.env.NODE_ENV === "development",
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -15,7 +16,6 @@ export const authOptions: AuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: "jwt" },
-  debug: process.env.NODE_ENV === "development",
   theme: {
     colorScheme: "auto",
   },

@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import Script from "next/script";
 
 import { WebVitals } from "./web-vitals";
+import { RootProvider } from "./root-provider";
 
 export const metadata: Metadata = {
   title: "Md Irshad - 🐋 Software Developer",
@@ -28,7 +29,7 @@ export default function RootLayout(props: React.PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        {children}
+        <RootProvider>{children}</RootProvider>
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"

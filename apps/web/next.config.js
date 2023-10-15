@@ -3,12 +3,12 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  swcMinify: true,
   experimental: {
     webVitalsAttribution: ["CLS", "FCP", "FID", "INP", "LCP", "TTFB"],
+  },
+  swcMinify: true,
+  typescript: {
+    ignoreBuildErrors: false,
   },
 };
 

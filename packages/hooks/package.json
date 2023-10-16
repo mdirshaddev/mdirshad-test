@@ -8,6 +8,7 @@
   "module": "build/index.esm.js",
   "scripts": {
     "build": "rollup --config rollup.config.ts --configPlugin typescript",
+    "typecheck:lint": "tsc",
     "prepublishOnly": "pnpm run build:clean && npm run build",
     "build:clean": "rm -rf build",
     "clean": "rm -rf node_modules build"

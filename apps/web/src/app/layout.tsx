@@ -1,4 +1,6 @@
 import "./globals.css";
+import "./mdx.css";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 import { type Metadata } from "next";
 

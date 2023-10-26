@@ -22,6 +22,7 @@
     "@giscus/react": "^2.3.0",
     "@prisma/client": "^5.4.2",
     "@radix-ui/react-scroll-area": "^1.0.5",
+    "@trpc/server": "^10.42.0",
     "class-variance-authority": "^0.7.0",
     "cloudinary-build-url": "^0.2.4",
     "date-fns": "^2.30.0",
@@ -45,7 +46,8 @@
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "sharp": "^0.32.6",
-    "shiki": "^0.14.5"
+    "shiki": "^0.14.5",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.6",

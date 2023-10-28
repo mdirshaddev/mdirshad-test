@@ -39,6 +39,7 @@ const nextConfig = {
       transform: "react-icons/{{member}}",
     },
   },
+  output: "standalone", // for docker it is required
   swcMinify: true,
   typescript: {
     ignoreBuildErrors: false,

@@ -2,12 +2,10 @@
 "use client";
 
 import { useEffect } from "react";
-
 import { SessionProvider } from "next-auth/react";
-
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-
 import { Toaster, toast } from "react-hot-toast";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { TRPCProvider } from "src/modules/client";
 
 interface window extends Window {
   workbox?: any;
@@ -46,15 +44,11 @@ export function RootProvider(props: React.PropsWithChildren) {
             <div className="flex-1 w-0 p-4">
               <div className="flex items-start">
                 <div className="flex-shrink-0 pt-0.5">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=6GHAjsWpt9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                    alt=""
-                  />
+                  {/* TODO: Placeholder for some animated icons */}
                 </div>
                 <div className="ml-3 flex-1">
                   <p className="text-sm font-medium text-gray-900">
-                    Md Irshad - PWA Install Successfully
+                    PWA Install Successfully
                   </p>
                   <p className="mt-1 text-sm text-gray-500">
                     Your app is now cached for offline use.
@@ -124,14 +118,16 @@ export function RootProvider(props: React.PropsWithChildren) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
-      <Toaster position="bottom-center" reverseOrder={false} />
-      <SessionProvider>{props.children}</SessionProvider>
-    </NextThemesProvider>
+    <TRPCProvider>
+      <NextThemesProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <Toaster position="bottom-center" reverseOrder={false} />
+        <SessionProvider>{props.children}</SessionProvider>
+      </NextThemesProvider>
+    </TRPCProvider>
   );
 }

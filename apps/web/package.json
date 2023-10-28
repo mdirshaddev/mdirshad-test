@@ -6,9 +6,11 @@
   "scripts": {
     "start": "next start",
     "dev": "next dev",
-    "build": "next build",
+    "build": "rm -rf .next && next build",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy"
+    "prisma:migrate": "prisma migrate deploy",
+    "docker-build": "cross-env IS_VERCEL=false pnpm build",
+    "vercel-build": "cross-env IS_VERCEL=true pnpm build"
   },
   "private": true,
   "license": "MIT",
@@ -63,6 +65,7 @@
     "@types/react-dom": "^18.2.13",
     "@typescript-eslint/parser": "^6.7.5",
     "autoprefixer": "^10.4.16",
+    "cross-env": "^7.0.3",
     "esbuild": "^0.19.5",
     "eslint": "^8.51.0",
     "eslint-config-next": "^13.5.4",

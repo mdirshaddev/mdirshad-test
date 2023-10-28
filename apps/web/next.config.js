@@ -39,11 +39,17 @@ const nextConfig = {
       transform: "react-icons/{{member}}",
     },
   },
-  output: "standalone", // for docker it is required
   swcMinify: true,
   typescript: {
     ignoreBuildErrors: false,
   },
 };
 
-module.exports = nextConfig;
+if (process.env.IS_VERCEL == "false") {
+  console.log("Docker build for Next.js application image");
+  nextConfig["output"] = "standalone"; // for docker it is required
+  module.exports = nextConfig;
+} else {
+  console.log("Vercel or Locally build for Next.js deployment or development");
+  module.exports = nextConfig;
+}

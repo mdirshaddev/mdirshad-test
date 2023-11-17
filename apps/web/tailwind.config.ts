@@ -21,6 +21,10 @@ module.exports = {
       },
     },
     extend: {
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       backgroundImage: {
         "hero-right-side":
           "radial-gradient(farthest-corner circle at 0% 0%, rgba(0, 58, 117, 0.3) 0%, #101418 100%)",
@@ -38,7 +42,6 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-
       colors: {
         accent: {
           DEFAULT: "hsl(var(--accent))",
@@ -72,6 +75,16 @@ module.exports = {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       screens: {

@@ -101,7 +101,7 @@ const Page: React.FC<Props> = async ({
             Written on{" "}
             {frontmatter?.publishedAt &&
               format(new Date(frontmatter?.publishedAt), "MMMM dd, yyyy")}{" "}
-            by Theodorus Clarence.
+            by Md Irshad.
           </p>
 
           {frontmatter?.lastUpdated && (

@@ -4,10 +4,14 @@ import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 import { type Metadata } from "next";
 
+import { Poppins as PoppinsFont } from "next/font/google";
+
 import Script from "next/script";
 
 import { WebVitals } from "./web-vitals";
 import { RootProvider } from "./root-provider";
+import { SiteHeader } from "src/modules/layout/site-header";
+import { SiteFooter } from "src/modules/layout/site-footer";
 
 export const metadata: Metadata = {
   category: "Personal Website",
@@ -26,12 +30,21 @@ export const metadata: Metadata = {
   title: "Md Irshad - 🐋 Software Developer",
 };
 
+const nextPoppinsFont = PoppinsFont({
+  subsets: ["latin"],
+  weight: "500",
+});
+
 export default function RootLayout(props: React.PropsWithChildren) {
   const { children } = props;
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <RootProvider>{children}</RootProvider>
+      <body className={nextPoppinsFont.className}>
+        <RootProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </RootProvider>
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"

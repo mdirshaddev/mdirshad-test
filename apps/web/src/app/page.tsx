@@ -1,3 +1,5 @@
 export default function Page() {
-  return <main></main>;
+  return (
+    <main className="relative min-h-[calc(100vh-64px)] overflow-hidden"></main>
+  );
 }

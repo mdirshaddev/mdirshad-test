@@ -87,8 +87,8 @@ const Page: React.FC<Props> = async ({
       <section className="mx-auto max-w-[1400px] py-4">
         <article className="px-4 lg:px-8">
           <NextCloudinaryImg
-            publicId={`theodorusclarence/banner/${frontmatter?.banner}`}
-            alt={`Photo from unsplash: ${frontmatter?.banner}`}
+            publicId={`mdirshad/banner/${frontmatter?.banner}`}
+            alt={`Banner for ${frontmatter?.slug} : ${frontmatter?.banner}`}
             width={1336}
             height={534.4}
             aspect={{ height: 2, width: 5 }}

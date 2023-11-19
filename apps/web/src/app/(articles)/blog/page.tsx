@@ -13,8 +13,8 @@ const Page: React.FC = async (): Promise<JSX.Element> => {
       <section className="mx-auto max-w-[1400px]">
         <article className="px-4 lg:px-8">
           <div>Blog page</div>
-          <StyledLink className="" href={"/blog/2021-retrospective"}>
-            Nextjs Fetch method
+          <StyledLink className="" href={"/blog/example"}>
+            Example blog
           </StyledLink>
         </article>
       </section>

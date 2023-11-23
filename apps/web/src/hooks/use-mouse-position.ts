@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 /**
  * The `useMousePosition` function is a custom hook in TypeScript that tracks the mouse position within
@@ -18,7 +18,7 @@ export const useMousePosition = (Element: HTMLDivElement | null) => {
     y: number | null;
   }>({
     x: null,
-    y: null,
+    y: null
   });
 
   const updateMousePosition = (e: MouseEvent) => {
@@ -28,10 +28,10 @@ export const useMousePosition = (Element: HTMLDivElement | null) => {
 
   useEffect(() => {
     if (Element) {
-      Element.addEventListener("mousemove", updateMousePosition);
+      Element.addEventListener('mousemove', updateMousePosition);
 
       return () =>
-        Element.removeEventListener("mousemove", updateMousePosition);
+        Element.removeEventListener('mousemove', updateMousePosition);
     }
   }, [Element]);
 

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
 // TODO: Need to work on it's design
 export default function GlobalError({
   error,
-  reset,
+  reset
 }: {
   error: Error & { digest?: string };
   reset: () => void;

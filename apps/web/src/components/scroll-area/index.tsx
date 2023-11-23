@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
 import {
   forwardRef,
-  type ElementRef,
   type ComponentPropsWithoutRef,
-} from "react";
+  type ElementRef
+} from 'react';
+
 import {
-  Root,
-  Viewport,
   Corner,
+  Root,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
-} from "@radix-ui/react-scroll-area";
-
-import { cx as cn } from "class-variance-authority";
+  Viewport
+} from '@radix-ui/react-scroll-area';
+import { cx as cn } from 'class-variance-authority';
 
 const ScrollArea = forwardRef<
   ElementRef<typeof Root>,
@@ -21,10 +21,9 @@ const ScrollArea = forwardRef<
 >(({ className, children, ...props }, ref) => (
   <Root
     ref={ref}
-    className={cn("relative overflow-hidden", className)}
-    {...props}
-  >
-    <Viewport className="h-full w-full rounded-[inherit]">{children}</Viewport>
+    className={cn('relative overflow-hidden', className)}
+    {...props}>
+    <Viewport className='h-full w-full rounded-[inherit]'>{children}</Viewport>
     <ScrollBar />
     <Corner />
   </Root>
@@ -34,24 +33,23 @@ ScrollArea.displayName = Root.displayName;
 const ScrollBar = forwardRef<
   ElementRef<typeof ScrollAreaScrollbar>,
   ComponentPropsWithoutRef<typeof ScrollAreaScrollbar>
->(({ className, orientation = "vertical", ...props }, ref) => (
+>(({ className, orientation = 'vertical', ...props }, ref) => (
   <ScrollAreaScrollbar
     ref={ref}
     orientation={orientation}
     className={cn(
-      "flex touch-none select-none transition-colors",
-      orientation === "vertical" &&
-        "h-full w-2.5 border-l border-l-transparent p-[1px]",
-      orientation === "horizontal" &&
-        "h-2.5 border-t border-t-transparent p-[1px]",
+      'flex touch-none select-none transition-colors',
+      orientation === 'vertical' &&
+        'h-full w-2.5 border-l border-l-transparent p-[1px]',
+      orientation === 'horizontal' &&
+        'h-2.5 border-t border-t-transparent p-[1px]',
       className
     )}
-    {...props}
-  >
+    {...props}>
     <ScrollAreaThumb
       className={cn(
-        "relative rounded-full bg-border",
-        orientation === "vertical" && "flex-1"
+        'relative rounded-full bg-border',
+        orientation === 'vertical' && 'flex-1'
       )}
     />
   </ScrollAreaScrollbar>

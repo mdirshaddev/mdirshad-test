@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { useWindowFocus } from "./use-window-focus";
+import { useWindowFocus } from './use-window-focus';
 
 export namespace useQueryPollingWhileWindowFocused {
   export interface Args {
@@ -31,7 +31,7 @@ export function useQueryPollingWhileWindowFocused({
   pollInterval,
   refetch,
   startPolling,
-  stopPolling,
+  stopPolling
 }: useQueryPollingWhileWindowFocused.Args): void {
   const { isWindowFocused } = useWindowFocus();
 

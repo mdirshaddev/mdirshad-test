@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Giscus from "@giscus/react";
-import { useTheme } from "next-themes";
+import Giscus from '@giscus/react';
+import { useTheme } from 'next-themes';
 
 /**
  * The `GiscusCommentBox` component is a TypeScript React component that renders a comment box using
@@ -13,18 +13,18 @@ export const GiscusCommentBox: React.FC = () => {
     <Giscus
       repo={`${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/mdirshad`}
       repoId={process.env.NEXT_PUBLIC_GITHUB_REPO_ID as string}
-      category="General"
-      categoryId="DIC_kwDOKgI5BM4CaU2d"
-      strict="1"
-      mapping="title"
-      inputPosition={"top"}
+      category='General'
+      categoryId='DIC_kwDOKgI5BM4CaU2d'
+      strict='1'
+      mapping='title'
+      inputPosition={'top'}
       theme={
-        theme == "system" ? systemTheme : theme == "light" ? "light" : "dark"
+        theme == 'system' ? systemTheme : theme == 'light' ? 'light' : 'dark'
       }
-      lang={"en"}
-      loading="lazy"
-      emitMetadata="1"
-      reactionsEnabled="1"
+      lang={'en'}
+      loading='lazy'
+      emitMetadata='1'
+      reactionsEnabled='1'
     />
   );
 };

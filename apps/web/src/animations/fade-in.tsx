@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { cx } from "class-variance-authority";
+import { cx } from 'class-variance-authority';
 
-import { useLoaded } from "src/hooks/use-loaded";
+import { useLoaded } from 'src/hooks/use-loaded';
 
 export type FadeInContainerProps = React.PropsWithChildren & {
   className?: string | undefined;
@@ -23,6 +23,6 @@ export const FadeInContainer: React.FC<FadeInContainerProps> = (
 
   const { className, children } = props;
   return (
-    <div className={cx(isLoaded && "fade-in-start", className)}>{children}</div>
+    <div className={cx(isLoaded && 'fade-in-start', className)}>{children}</div>
   );
 };

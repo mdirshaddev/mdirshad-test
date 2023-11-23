@@ -1,37 +1,36 @@
-"use client";
+'use client';
 
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
+import { useEffect, useRef } from 'react';
 
-import { useEffect, useRef } from "react";
+import { ScrollArea, ScrollBar } from 'src/components/scroll-area';
 
-import { ScrollArea, ScrollBar } from "src/components/scroll-area";
-
-const TOCBody = dynamic(() => import("./toc-body").then((mod) => mod.TOCBody), {
+const TOCBody = dynamic(() => import('./toc-body').then(mod => mod.TOCBody), {
   loading: () => (
-    <div className="flex flex-col gap-2 px-2">
-      <div className="rounded-md bg-transparent h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
-      <div className="animate-pulse rounded-md bg-muted h-4 w-full" />
+    <div className='flex flex-col gap-2 px-2'>
+      <div className='rounded-md bg-transparent h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
+      <div className='animate-pulse rounded-md bg-muted h-4 w-full' />
     </div>
   ),
-  ssr: false,
+  ssr: false
 });
 
 type TableOfContentsProps = {
@@ -57,7 +56,7 @@ export const TOC: React.FC<TableOfContentsProps> = (props): JSX.Element => {
   const lastPosition = useRef<number>(0);
 
   useEffect(() => {
-    const container = document.getElementById("toc-container");
+    const container = document.getElementById('toc-container');
     const activeLink = document.getElementById(`link-${activeSection}`);
 
     if (container && activeLink) {
@@ -82,18 +81,18 @@ export const TOC: React.FC<TableOfContentsProps> = (props): JSX.Element => {
           ? lTop - container.clientHeight + offset
           : lTop - offset;
 
-        container.scrollTo({ behavior: "smooth", top });
+        container.scrollTo({ behavior: 'smooth', top });
       }
     }
   }, [activeSection]);
   //#endregion  //*======== Scroll into view ===========
 
   return (
-    <div className="rounded-lg border pb-2">
-      <h3 className="hidden cursor-pointer select-none px-4 pb-2 pt-4 text-gray-900 dark:text-gray-100 md:text-xl lg:block">
+    <div className='rounded-lg border pb-2'>
+      <h3 className='hidden cursor-pointer select-none px-4 pb-2 pt-4 text-gray-900 dark:text-gray-100 md:text-xl lg:block'>
         Table of Contents
       </h3>
-      <div className="divide-y divide-dashed" />
+      <div className='divide-y divide-dashed' />
       <ScrollArea>
         <TOCBody toc={toc} activeSection={activeSection} minLevel={minLevel} />
         <ScrollBar />

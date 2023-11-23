@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from 'react';
 
-import { type ReadTimeResults } from "reading-time";
+import { type ReadTimeResults } from 'reading-time';
 
-import { useScrollSpy } from "src/hooks/use-scrollspy";
+import { useScrollSpy } from 'src/hooks/use-scrollspy';
 
-import { TOC, type HeadingScrollSpy } from "./toc";
+import { TOC, type HeadingScrollSpy } from './toc';
 
 /**
  * The `TableOfContent` component is a TypeScript React component that generates a table of contents
@@ -31,13 +31,13 @@ export const TableOfContent: React.FC<{
     toc?.reduce((min, item) => (item.level < min ? item.level : min), 10) ?? 0;
 
   useEffect(() => {
-    const headings = document.querySelectorAll(".mdx h1, .mdx h2, .mdx h3");
+    const headings = document.querySelectorAll('.mdx h1, .mdx h2, .mdx h3');
 
     const headingArr: HeadingScrollSpy = [];
-    headings.forEach((heading) => {
+    headings.forEach(heading => {
       const id = heading.id;
-      const level = +heading.tagName.replace("H", "");
-      const text = heading.textContent + "";
+      const level = +heading.tagName.replace('H', '');
+      const text = heading.textContent + '';
 
       headingArr.push({ id, level, text });
     });

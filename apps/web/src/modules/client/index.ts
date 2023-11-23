@@ -1,1 +1,1 @@
-export { TRPCProvider } from "./tRPC-provider";
+export { TRPCProvider } from './tRPC-provider';

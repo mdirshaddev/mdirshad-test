@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { type CopiedValue, type CopyFn } from "src/types/hooks";
+import { type CopiedValue, type CopyFn } from 'src/types/hooks';
 
 /**
  * The `useCopyToClipboard` function is a custom React hook that allows you to copy text to the
@@ -14,10 +14,10 @@ import { type CopiedValue, type CopyFn } from "src/types/hooks";
 export const useCopyToClipboard = (): [CopyFn, CopiedValue] => {
   const [copiedText, setCopiedText] = useState<CopiedValue>(null);
 
-  const copy: CopyFn = async (text) => {
+  const copy: CopyFn = async text => {
     if (!navigator?.clipboard) {
       // eslint-disable-next-line no-console
-      console.warn("Clipboard not supported");
+      console.warn('Clipboard not supported');
       // TODO: Sentry monitoring logging
       return false;
     }
@@ -29,7 +29,7 @@ export const useCopyToClipboard = (): [CopyFn, CopiedValue] => {
       return true;
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.warn("Copy failed", error);
+      console.warn('Copy failed', error);
       setCopiedText(null);
       // TODO: Sentry monitoring logging
       return false;

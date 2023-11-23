@@ -1,16 +1,18 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import React from "react";
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
-import { useTheme } from "next-themes";
+import { cx as cn } from 'class-variance-authority';
+import { useTheme } from 'next-themes';
 
-import { Icons } from "src/configs/icons";
-import { socialAccountsConfig } from "src/configs/social-accounts";
-import { themeConfig } from "src/configs/theme";
-import { cx as cn } from "class-variance-authority";
-import { Badge } from "src/components/badge";
-import { Button } from "src/components/buttons";
+import { Icons } from 'src/configs/icons';
+import { navigationConfig } from 'src/configs/navigation';
+import { socialAccountsConfig } from 'src/configs/social-accounts';
+import { themeConfig } from 'src/configs/theme';
+
+import { Badge } from 'src/components/badge';
+import { Button } from 'src/components/buttons';
 import {
   Command,
   CommandDialog,
@@ -20,18 +22,16 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-  CommandShortcut,
-} from "src/components/command";
-import { ToastAction, useToast } from "src/components/toast";
+  CommandShortcut
+} from 'src/components/command';
+import { ToastAction, useToast } from 'src/components/toast';
 
-import { useCopyToClipboard } from "src/hooks/use-copy-to-clipboard";
-
-import { navigationConfig } from "src/configs/navigation";
+import { useCopyToClipboard } from 'src/hooks/use-copy-to-clipboard';
 
 export const CommandDialogMenu = () => {
   const ref = React.useRef<HTMLDivElement | null>(null);
 
-  const [inputValue, setInputValue] = React.useState("");
+  const [inputValue, setInputValue] = React.useState('');
 
   const [open, setOpen] = React.useState(false);
 
@@ -43,12 +43,12 @@ export const CommandDialogMenu = () => {
 
   const [copy] = useCopyToClipboard();
 
-  const [propmtMenu, setPromptMenu] = React.useState<string[]>(["home"]);
+  const [propmtMenu, setPromptMenu] = React.useState<string[]>(['home']);
   const activePage = propmtMenu[propmtMenu.length - 1];
-  const isHome = activePage === "home";
+  const isHome = activePage === 'home';
 
   const popPage = React.useCallback(() => {
-    setPromptMenu((propmtMenu) => {
+    setPromptMenu(propmtMenu => {
       const x = [...propmtMenu];
       x.splice(-1, 1);
       return x;
@@ -61,7 +61,7 @@ export const CommandDialogMenu = () => {
         return;
       }
 
-      if (e.key === "Backspace") {
+      if (e.key === 'Backspace') {
         e.preventDefault();
         popPage();
       }
@@ -71,51 +71,50 @@ export const CommandDialogMenu = () => {
 
   function bounce() {
     if (ref.current) {
-      ref.current.style.transform = "scale(0.96)";
+      ref.current.style.transform = 'scale(0.96)';
       setTimeout(() => {
         if (ref.current) {
-          ref.current.style.transform = "";
+          ref.current.style.transform = '';
         }
       }, 100);
 
-      setInputValue("");
+      setInputValue('');
     }
   }
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "m" && e.ctrlKey) {
-        setOpen((open) => !open);
+      if (e.key === 'm' && e.ctrlKey) {
+        setOpen(open => !open);
       }
     };
 
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
   }, []);
 
   return (
     <React.Fragment>
       <Button
-        variant={"outline"}
-        className="bg-background pr-[0.35rem]"
-        onClick={() => setOpen(!open)}
-      >
-        <p className="flex items-center text-sm font-semibold text-black dark:text-white">
-          Command Menu{" "}
-          <kbd className="pointer-events-none ml-1.5 inline-flex h-6 w-6 select-none items-center gap-1 rounded border bg-muted font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-            <span className="w-full text-xs">⌘</span>
+        variant={'outline'}
+        className='bg-background pr-[0.35rem]'
+        onClick={() => setOpen(!open)}>
+        <p className='flex items-center text-sm font-semibold text-black dark:text-white'>
+          Command Menu{' '}
+          <kbd className='pointer-events-none ml-1.5 inline-flex h-6 w-6 select-none items-center gap-1 rounded border bg-muted font-mono text-[10px] font-medium text-muted-foreground opacity-100'>
+            <span className='w-full text-xs'>⌘</span>
           </kbd>
-          <kbd className="pointer-events-none ml-1.5 inline-flex h-6 w-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-            <span className="w-full text-xs">M</span>
+          <kbd className='pointer-events-none ml-1.5 inline-flex h-6 w-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100'>
+            <span className='w-full text-xs'>M</span>
           </kbd>
         </p>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command
-          className="p-0"
+          className='p-0'
           ref={ref}
           onKeyDown={(e: React.KeyboardEvent) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               bounce();
             }
 
@@ -123,25 +122,24 @@ export const CommandDialogMenu = () => {
               return;
             }
 
-            if (e.key === "Backspace") {
+            if (e.key === 'Backspace') {
               e.preventDefault();
               popPage();
               bounce();
             }
-          }}
-        >
+          }}>
           <CommandInput
             autoFocus
-            onValueChange={(value) => {
+            onValueChange={value => {
               setInputValue(value);
             }}
-            className="border-none shadow-none focus:border-none focus:shadow-none"
-            placeholder="Type a command or search..."
+            className='border-none shadow-none focus:border-none focus:shadow-none'
+            placeholder='Type a command or search...'
           />
-          <div className="flex flex-row items-center gap-2 border-b p-4">
-            {propmtMenu.map((pageName) => (
+          <div className='flex flex-row items-center gap-2 border-b p-4'>
+            {propmtMenu.map(pageName => (
               <Badge
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   if (pageName !== activePage) {
                     bounce();
@@ -152,75 +150,67 @@ export const CommandDialogMenu = () => {
                 aria-disabled={pageName === activePage}
                 className={cn(
                   pageName === activePage
-                    ? "cursor-pointer bg-primary"
-                    : "cursor-pointer bg-slate-700 dark:bg-slate-300"
-                )}
-              >
+                    ? 'cursor-pointer bg-primary'
+                    : 'cursor-pointer bg-slate-700 dark:bg-slate-300'
+                )}>
                 {pageName}
               </Badge>
             ))}
           </div>
-          <CommandList className="">
+          <CommandList className=''>
             <CommandEmpty>No results found.</CommandEmpty>
-            {activePage === "home" && (
+            {activePage === 'home' && (
               <React.Fragment>
-                <CommandGroup heading="Suggestions">
+                <CommandGroup heading='Suggestions'>
                   <CommandItem
-                    onSelect={() => setPromptMenu([...propmtMenu, "projects"])}
-                    className="cursor-pointer"
-                  >
-                    <Icons.search.projects className="mr-2 h-4 w-4" />
+                    onSelect={() => setPromptMenu([...propmtMenu, 'projects'])}
+                    className='cursor-pointer'>
+                    <Icons.search.projects className='mr-2 h-4 w-4' />
                     <span>Search Projects</span>
                     <CommandShortcut></CommandShortcut>
                   </CommandItem>
                   <CommandItem
-                    onSelect={() => setPromptMenu([...propmtMenu, "posts"])}
-                    className="cursor-pointer"
-                  >
-                    <Icons.search.posts className="mr-2 h-4 w-4" />
+                    onSelect={() => setPromptMenu([...propmtMenu, 'posts'])}
+                    className='cursor-pointer'>
+                    <Icons.search.posts className='mr-2 h-4 w-4' />
                     <span>Search Posts</span>
                     <CommandShortcut></CommandShortcut>
                   </CommandItem>
                   <CommandItem
-                    onSelect={() => setPromptMenu([...propmtMenu, "social"])}
-                    className="cursor-pointer"
-                  >
-                    <Icons.share className="mr-2 h-4 w-4" />
+                    onSelect={() => setPromptMenu([...propmtMenu, 'social'])}
+                    className='cursor-pointer'>
+                    <Icons.share className='mr-2 h-4 w-4' />
                     <span>Social Accounts</span>
                     <CommandShortcut></CommandShortcut>
                   </CommandItem>
                 </CommandGroup>
                 <CommandSeparator />
-                <CommandGroup heading="Navigation">
+                <CommandGroup heading='Navigation'>
                   <CommandItem
-                    onSelect={() => setPromptMenu([...propmtMenu, "blogs"])}
-                    className="cursor-pointer"
-                  >
-                    <Icons.navigation.blog.icon className="mr-2 h-4 w-4" />
+                    onSelect={() => setPromptMenu([...propmtMenu, 'blogs'])}
+                    className='cursor-pointer'>
+                    <Icons.navigation.blog.icon className='mr-2 h-4 w-4' />
                     <span>Blog</span>
                   </CommandItem>
                   <CommandItem
-                    onSelect={() => setPromptMenu([...propmtMenu, "works"])}
-                    className="cursor-pointer"
-                  >
-                    <Icons.navigation.works.icon className="mr-2 h-4 w-4" />
+                    onSelect={() => setPromptMenu([...propmtMenu, 'works'])}
+                    className='cursor-pointer'>
+                    <Icons.navigation.works.icon className='mr-2 h-4 w-4' />
                     <span>Works</span>
                   </CommandItem>
                   <CommandItem
-                    onSelect={() => setPromptMenu([...propmtMenu, "insights"])}
-                    className="cursor-pointer"
-                  >
-                    <Icons.navigation.insights.icon className="mr-2 h-4 w-4" />
+                    onSelect={() => setPromptMenu([...propmtMenu, 'insights'])}
+                    className='cursor-pointer'>
+                    <Icons.navigation.insights.icon className='mr-2 h-4 w-4' />
                     <span>Insights</span>
                   </CommandItem>
                   <CommandItem
                     onSelect={() => {
-                      router.push("/guestbook");
+                      router.push('/guestbook');
                       setOpen(false);
                     }}
-                    className="cursor-pointer"
-                  >
-                    <Icons.navigation.guestbook className="mr-2 h-4 w-4" />
+                    className='cursor-pointer'>
+                    <Icons.navigation.guestbook className='mr-2 h-4 w-4' />
                     <span>Guestbook</span>
                     <CommandShortcut>
                       <Icons.directions.arrowUpRight />
@@ -228,12 +218,11 @@ export const CommandDialogMenu = () => {
                   </CommandItem>
                   <CommandItem
                     onSelect={() => {
-                      router.push("/about");
+                      router.push('/about');
                       setOpen(false);
                     }}
-                    className="cursor-pointer"
-                  >
-                    <Icons.navigation.about className="mr-2 h-4 w-4" />
+                    className='cursor-pointer'>
+                    <Icons.navigation.about className='mr-2 h-4 w-4' />
                     <span>About</span>
                     <CommandShortcut>
                       <Icons.directions.arrowUpRight />
@@ -241,12 +230,11 @@ export const CommandDialogMenu = () => {
                   </CommandItem>
                 </CommandGroup>
                 <CommandSeparator />
-                <CommandGroup heading="General">
+                <CommandGroup heading='General'>
                   <CommandItem
-                    onSelect={() => setPromptMenu([...propmtMenu, "themes"])}
-                    className="cursor-pointer"
-                  >
-                    <Icons.switch className="mr-2 h-4 w-4" />
+                    onSelect={() => setPromptMenu([...propmtMenu, 'themes'])}
+                    className='cursor-pointer'>
+                    <Icons.switch className='mr-2 h-4 w-4' />
                     <span>Change Theme</span>
                     <CommandShortcut></CommandShortcut>
                   </CommandItem>
@@ -260,35 +248,32 @@ export const CommandDialogMenu = () => {
                           toast({
                             action: (
                               <ToastAction
-                                altText="Close"
-                                className="bg-red-500 text-white hover:bg-red-500 hover:text-white active:border-none"
-                              >
+                                altText='Close'
+                                className='bg-red-500 text-white hover:bg-red-500 hover:text-white active:border-none'>
                                 Close
                               </ToastAction>
                             ),
-                            description: "Copied to Clipboard",
-                            title: window.location.href,
+                            description: 'Copied to Clipboard',
+                            title: window.location.href
                           });
                         })
-                        .catch((err) => {});
+                        .catch(err => {});
                     }}
-                    className="cursor-pointer"
-                  >
-                    <Icons.copy className="mr-2 h-4 w-4" />
+                    className='cursor-pointer'>
+                    <Icons.copy className='mr-2 h-4 w-4' />
                     <span>Copy Current URL</span>
                     <CommandShortcut></CommandShortcut>
                   </CommandItem>
                 </CommandGroup>
                 <CommandSeparator />
-                <CommandGroup heading="Help">
+                <CommandGroup heading='Help'>
                   <CommandItem
                     onSelect={() => {
                       setOpen(false);
-                      router.push("/docs");
+                      router.push('/docs');
                     }}
-                    className="cursor-pointer"
-                  >
-                    <Icons.docs className="mr-2 h-4 w-4" />
+                    className='cursor-pointer'>
+                    <Icons.docs className='mr-2 h-4 w-4' />
                     <span>Search Docs</span>
                     <CommandShortcut></CommandShortcut>
                   </CommandItem>
@@ -296,24 +281,22 @@ export const CommandDialogMenu = () => {
                     onSelect={() => {
                       setOpen(false);
                     }}
-                    className="cursor-pointer"
-                  >
-                    <Icons.feedback className="mr-2 h-4 w-4" />
+                    className='cursor-pointer'>
+                    <Icons.feedback className='mr-2 h-4 w-4' />
                     <span>Send Feedbacks</span>
                     <CommandShortcut></CommandShortcut>
                   </CommandItem>
-                  <CommandItem className="cursor-pointer">
-                    <Icons.meeting className="mr-2 h-4 w-4" />
+                  <CommandItem className='cursor-pointer'>
+                    <Icons.meeting className='mr-2 h-4 w-4' />
                     <span>1 - 1 Connect</span>
                     <CommandShortcut></CommandShortcut>
                   </CommandItem>
-                  <CommandItem className="cursor-pointer">
+                  <CommandItem className='cursor-pointer'>
                     <a
-                      className="flex h-full w-full flex-row items-center"
-                      target="_self"
-                      href="mailto:mdirshaddev+query@gmail.com?subject=Query"
-                    >
-                      <Icons.ask className="mr-2 h-4 w-4" />
+                      className='flex h-full w-full flex-row items-center'
+                      target='_self'
+                      href='mailto:mdirshaddev+query@gmail.com?subject=Query'>
+                      <Icons.ask className='mr-2 h-4 w-4' />
                       <span>Ask Question</span>
                       <CommandShortcut></CommandShortcut>
                     </a>
@@ -321,25 +304,24 @@ export const CommandDialogMenu = () => {
                 </CommandGroup>
               </React.Fragment>
             )}
-            {activePage === "projects" && <SearchProjectsPromptMenu />}
-            {activePage === "posts" && <SearchPostsPromptMenu />}
-            {activePage === "blogs" && (
-              <CommandGroup heading="Blog">
+            {activePage === 'projects' && <SearchProjectsPromptMenu />}
+            {activePage === 'posts' && <SearchPostsPromptMenu />}
+            {activePage === 'blogs' && (
+              <CommandGroup heading='Blog'>
                 {navigationConfig.blog.subnavigation.map(
                   ({ name, href, external, Icon, ShortcutIcon }) => (
                     <CommandItem
                       onSelect={() => {
                         if (external) {
-                          window.open(href, "_blank");
+                          window.open(href, '_blank');
                         } else {
                           router.push(href);
                         }
                         setOpen(false);
                       }}
-                      className="cursor-pointer"
-                      key={name}
-                    >
-                      <Icon className="mr-2 h-4 w-4" />
+                      className='cursor-pointer'
+                      key={name}>
+                      <Icon className='mr-2 h-4 w-4' />
                       <span>{name}</span>
                       <CommandShortcut>
                         <ShortcutIcon />
@@ -349,23 +331,22 @@ export const CommandDialogMenu = () => {
                 )}
               </CommandGroup>
             )}
-            {activePage === "works" && (
-              <CommandGroup heading="Works">
+            {activePage === 'works' && (
+              <CommandGroup heading='Works'>
                 {navigationConfig.works.subnavigation.map(
                   ({ name, href, external, Icon, ShortcutIcon }) => (
                     <CommandItem
                       onSelect={() => {
                         if (external) {
-                          window.open(href, "_blank");
+                          window.open(href, '_blank');
                         } else {
                           router.push(href);
                         }
                         setOpen(false);
                       }}
-                      className="cursor-pointer"
-                      key={name}
-                    >
-                      <Icon className="mr-2 h-4 w-4" />
+                      className='cursor-pointer'
+                      key={name}>
+                      <Icon className='mr-2 h-4 w-4' />
                       <span>{name}</span>
                       <CommandShortcut>
                         <ShortcutIcon />
@@ -376,8 +357,8 @@ export const CommandDialogMenu = () => {
               </CommandGroup>
             )}
 
-            {activePage === "insights" && (
-              <CommandGroup heading="Insights">
+            {activePage === 'insights' && (
+              <CommandGroup heading='Insights'>
                 {navigationConfig.insights.subnavigation.map(
                   ({ name, href, Icon, ShortcutIcon }) => (
                     <CommandItem
@@ -385,10 +366,9 @@ export const CommandDialogMenu = () => {
                         router.push(href);
                         setOpen(false);
                       }}
-                      className="cursor-pointer"
-                      key={name}
-                    >
-                      <Icon className="mr-2 h-4 w-4" />
+                      className='cursor-pointer'
+                      key={name}>
+                      <Icon className='mr-2 h-4 w-4' />
                       <span>{name}</span>
                       <CommandShortcut>
                         <ShortcutIcon />
@@ -398,38 +378,36 @@ export const CommandDialogMenu = () => {
                 )}
               </CommandGroup>
             )}
-            {activePage === "social" && (
-              <CommandGroup heading="Social Accounts">
+            {activePage === 'social' && (
+              <CommandGroup heading='Social Accounts'>
                 {socialAccountsConfig.map(
                   ({ name, href, AccountIcon, ShortcutIcon }) => (
                     <CommandItem
                       onSelect={() => {
-                        window.open(href, "_blank");
+                        window.open(href, '_blank');
                         setOpen(false);
                       }}
-                      className="cursor-pointer"
-                      key={name}
-                    >
-                      <AccountIcon className="mr-2 h-4 w-4" />
+                      className='cursor-pointer'
+                      key={name}>
+                      <AccountIcon className='mr-2 h-4 w-4' />
                       <span>{name}</span>
                       <CommandShortcut>
-                        <ShortcutIcon className="h-4 w-4" />
+                        <ShortcutIcon className='h-4 w-4' />
                       </CommandShortcut>
                     </CommandItem>
                   )
                 )}
               </CommandGroup>
             )}
-            {activePage === "themes" && (
-              <CommandGroup heading="General">
+            {activePage === 'themes' && (
+              <CommandGroup heading='General'>
                 {themeConfig.map(({ name, mode, ThemeIcon }) => (
                   <CommandItem
                     onSelect={() => setTheme(mode)}
                     key={name}
                     aria-label={name}
-                    className="cursor-pointer"
-                  >
-                    <ThemeIcon className="mr-2 h-4 w-4" />
+                    className='cursor-pointer'>
+                    <ThemeIcon className='mr-2 h-4 w-4' />
                     <span>{name}</span>
                   </CommandItem>
                 ))}

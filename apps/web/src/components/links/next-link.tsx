@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import Link, { LinkProps } from "next/link";
+import Link, { LinkProps } from 'next/link';
 
-import { cx } from "class-variance-authority";
+import { cx } from 'class-variance-authority';
 
 export type NextLinkProps = {
   href: string;
   children: React.ReactNode;
   openNewTab?: boolean;
   className?: string;
-} & React.ComponentPropsWithoutRef<"a"> &
+} & React.ComponentPropsWithoutRef<'a'> &
   LinkProps;
 
 /**
@@ -20,13 +20,13 @@ export type NextLinkProps = {
  * not start with '/' or '#', then a `Link` component is returned. Otherwise, an `a` element with
  * `target
  */
-export const NextLink: React.FC<NextLinkProps> = (props) => {
-  const { children, className = "", href, openNewTab, ...rest } = props;
+export const NextLink: React.FC<NextLinkProps> = props => {
+  const { children, className = '', href, openNewTab, ...rest } = props;
 
   const isNewTab =
     openNewTab !== undefined
       ? openNewTab
-      : href && !href.startsWith("/") && !href.startsWith("#");
+      : href && !href.startsWith('/') && !href.startsWith('#');
 
   if (!isNewTab) {
     return (
@@ -37,12 +37,11 @@ export const NextLink: React.FC<NextLinkProps> = (props) => {
   }
   return (
     <a
-      target="_blank"
-      rel="noopener noreferrer"
+      target='_blank'
+      rel='noopener noreferrer'
       href={href}
       {...rest}
-      className={cx(className, "cursor-newtab")}
-    >
+      className={cx(className, 'cursor-newtab')}>
       {children}
     </a>
   );

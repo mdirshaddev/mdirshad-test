@@ -1,27 +1,27 @@
 // Workbox scripts
-import { clientsClaim, skipWaiting } from "workbox-core";
-import { ExpirationPlugin } from "workbox-expiration";
+import { clientsClaim, skipWaiting } from 'workbox-core';
+import { ExpirationPlugin } from 'workbox-expiration';
 import {
   cleanupOutdatedCaches,
   matchPrecache,
-  precacheAndRoute,
-} from "workbox-precaching";
+  precacheAndRoute
+} from 'workbox-precaching';
 import {
   googleFontsCache,
   imageCache,
-  staticResourceCache,
-} from "workbox-recipes";
+  staticResourceCache
+} from 'workbox-recipes';
 import {
   registerRoute,
   setCatchHandler,
-  setDefaultHandler,
-} from "workbox-routing";
+  setDefaultHandler
+} from 'workbox-routing';
 import {
   CacheFirst,
   NetworkFirst,
   NetworkOnly,
-  StaleWhileRevalidate,
-} from "workbox-strategies";
+  StaleWhileRevalidate
+} from 'workbox-strategies';
 
 skipWaiting();
 clientsClaim();
@@ -41,141 +41,141 @@ imageCache();
 staticResourceCache();
 
 registerRoute(
-  "/",
+  '/',
   new NetworkFirst({
-    cacheName: "start-url",
+    cacheName: 'start-url',
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 86400,
         maxEntries: 1,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 registerRoute(
   /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
   new CacheFirst({
-    cacheName: "google-fonts",
+    cacheName: 'google-fonts',
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 31536e3,
         maxEntries: 4,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 registerRoute(
   /\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
   new StaleWhileRevalidate({
-    cacheName: "static-font-assets",
+    cacheName: 'static-font-assets',
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 604800,
         maxEntries: 4,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 // disable image cache, so we could observe the placeholder image when offline
 registerRoute(
   /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
   new NetworkOnly({
-    cacheName: "static-image-assets",
+    cacheName: 'static-image-assets',
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 86400,
         maxEntries: 64,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 registerRoute(
   /\.(?:js)$/i,
   new StaleWhileRevalidate({
-    cacheName: "static-js-assets",
+    cacheName: 'static-js-assets',
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 86400,
         maxEntries: 32,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 registerRoute(
   /\.(?:css|less)$/i,
   new StaleWhileRevalidate({
-    cacheName: "static-style-assets",
+    cacheName: 'static-style-assets',
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 86400,
         maxEntries: 32,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 registerRoute(
   /\.(?:json|xml|csv)$/i,
   new NetworkFirst({
-    cacheName: "static-data-assets",
+    cacheName: 'static-data-assets',
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 86400,
         maxEntries: 32,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 registerRoute(
   /\/api\/.*$/i,
   new NetworkFirst({
-    cacheName: "apis",
+    cacheName: 'apis',
     networkTimeoutSeconds: 10,
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 86400,
         maxEntries: 16,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 registerRoute(
   /.*/i,
   new NetworkFirst({
-    cacheName: "others",
+    cacheName: 'others',
     networkTimeoutSeconds: 10,
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 86400,
         maxEntries: 32,
-        purgeOnQuotaError: !0,
-      }),
-    ],
+        purgeOnQuotaError: !0
+      })
+    ]
   }),
-  "GET"
+  'GET'
 );
 
 // following lines gives you control of the offline fallback strategies
@@ -196,17 +196,17 @@ setCatchHandler(({ event }) => {
   // One approach would be to use request.destination, see
   // https://medium.com/dev-channel/service-worker-caching-strategies-based-on-request-types-57411dd7652c
   switch (event.request.destination) {
-    case "document":
+    case 'document':
       // If using precached URLs:
-      return matchPrecache("/fallback");
+      return matchPrecache('/fallback');
     // return caches.match('/fallback')
     // break;
-    case "image":
+    case 'image':
       // If using precached URLs:
-      return matchPrecache("/fallback.png");
+      return matchPrecache('/fallback.png');
     // return caches.match('/static/images/fallback.png')
     // break;
-    case "font":
+    case 'font':
     // If using precached URLs:
     // return matchPrecache(FALLBACK_FONT_URL);
     // return caches.match('/static/fonts/fallback.otf')

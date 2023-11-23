@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { Fragment, useMemo } from "react";
+import { Fragment, useMemo } from 'react';
 
-import { getMDXComponent } from "mdx-bundler/client";
+import { getMDXComponent } from 'mdx-bundler/client';
 
-import { TweetCard, YoutubeEmbed } from "src/components/embeddings";
-import { NextCloudinaryImg, Split, SplitImage } from "src/components/images";
-import { StyledLink } from "src/components/links";
+import { TweetCard, YoutubeEmbed } from 'src/components/embeddings';
+import { NextCloudinaryImg, Split, SplitImage } from 'src/components/images';
+import { StyledLink } from 'src/components/links';
 
-import { Pre } from "./components/pre";
+import { Pre } from './components/pre';
 
 // TODO: We cannot keep any here as type
 const MarkdownComponent: any = {
@@ -18,7 +18,7 @@ const MarkdownComponent: any = {
   Split,
   SplitImage,
   TweetCard,
-  YoutubeEmbed,
+  YoutubeEmbed
 };
 
 /**
@@ -37,7 +37,7 @@ export const MDXComponent: React.FC<{ code: string }> = (
     <Fragment>
       <Component
         components={{
-          ...MarkdownComponent,
+          ...MarkdownComponent
         }}
       />
     </Fragment>

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import throttle from "lodash/throttle";
+import throttle from 'lodash/throttle';
 
 // originally based on
 // https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/block.tsx#L128-L161
@@ -19,7 +19,7 @@ export const useScrollSpy: () => string | null = (): string | null => {
   const throttleMs = 100;
 
   const actionSectionScrollSpy = throttle(() => {
-    const sections = document.getElementsByClassName("hash-anchor");
+    const sections = document.getElementsByClassName('hash-anchor');
 
     let prevBBox: DOMRect | null = null;
     let currentSectionId = activeSection;
@@ -28,7 +28,7 @@ export const useScrollSpy: () => string | null = (): string | null => {
       const section = sections[i];
 
       if (!currentSectionId) {
-        currentSectionId = section.getAttribute("href")?.split("#")[1] ?? null;
+        currentSectionId = section.getAttribute('href')?.split('#')[1] ?? null;
       }
 
       const bbox = section.getBoundingClientRect();
@@ -37,7 +37,7 @@ export const useScrollSpy: () => string | null = (): string | null => {
 
       // GetBoundingClientRect returns values relative to viewport
       if (bbox.top - offset < 0) {
-        currentSectionId = section.getAttribute("href")?.split("#")[1] ?? null;
+        currentSectionId = section.getAttribute('href')?.split('#')[1] ?? null;
 
         prevBBox = bbox;
         continue;
@@ -51,12 +51,12 @@ export const useScrollSpy: () => string | null = (): string | null => {
   }, throttleMs);
 
   useEffect(() => {
-    window.addEventListener("scroll", actionSectionScrollSpy);
+    window.addEventListener('scroll', actionSectionScrollSpy);
 
     actionSectionScrollSpy();
 
     return () => {
-      window.removeEventListener("scroll", actionSectionScrollSpy);
+      window.removeEventListener('scroll', actionSectionScrollSpy);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

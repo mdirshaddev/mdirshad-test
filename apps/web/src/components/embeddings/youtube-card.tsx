@@ -1,8 +1,6 @@
-import { type YoutubeEmbedProps } from "src/types/embeddings";
-
-import LiteYoutubeEmbed from "react-lite-youtube-embed";
-
-import { cx } from "class-variance-authority";
+import { cx } from 'class-variance-authority';
+import LiteYoutubeEmbed from 'react-lite-youtube-embed';
+import { type YoutubeEmbedProps } from 'src/types/embeddings';
 
 /**
  * The `YoutubeEmbed` component is a TypeScript React component that renders a YouTube video embed with
@@ -16,7 +14,7 @@ export const YoutubeEmbed: React.FC<YoutubeEmbedProps> = ({
   ...rest
 }) => {
   return (
-    <figure className={cx("rounded shadow-lg", className)}>
+    <figure className={cx('rounded shadow-lg', className)}>
       <LiteYoutubeEmbed {...rest} noCookie={true} />
     </figure>
   );

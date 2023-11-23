@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { cx } from "class-variance-authority";
+import { cx } from 'class-variance-authority';
 
-import { NextLink } from "src/components/links";
+import { NextLink } from 'src/components/links';
 
 type TOCLinkProps = {
   id: string;
@@ -12,21 +12,20 @@ type TOCLinkProps = {
   activeSection: string | null;
 };
 
-export const TOCLink: React.FC<TOCLinkProps> = (props) => {
+export const TOCLink: React.FC<TOCLinkProps> = props => {
   const { id, level, minLevel, text, activeSection } = props;
   return (
     <NextLink
       href={`#${id}`}
       id={`link-${id}`}
       className={cx(
-        "font-medium hover:text-gray-700 focus:outline-none dark:hover:text-gray-200",
-        "focus-visible:text-gray-700 dark:focus-visible:text-gray-200",
+        'font-medium hover:text-gray-700 focus:outline-none dark:hover:text-gray-200',
+        'focus-visible:text-gray-700 dark:focus-visible:text-gray-200',
         activeSection === id
-          ? "text-gray-900 dark:text-gray-100"
-          : "text-gray-400 dark:text-gray-500"
+          ? 'text-gray-900 dark:text-gray-100'
+          : 'text-gray-400 dark:text-gray-500'
       )}
-      style={{ marginLeft: (level - minLevel) * 16 }}
-    >
+      style={{ marginLeft: (level - minLevel) * 16 }}>
       {text}
     </NextLink>
   );

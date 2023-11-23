@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * The Split component is a React functional component that renders its children inside a div with
@@ -9,9 +9,9 @@
  * @returns The Split component is returning a div element with the className "mb-0 flex flex-col
  * space-y-4" and the children passed to it.
  */
-export const Split: React.FC<React.PropsWithChildren> = (props) => {
+export const Split: React.FC<React.PropsWithChildren> = props => {
   const { children } = props;
-  return <div className="!mb-0 flex flex-col space-y-4">{children}</div>;
+  return <div className='!mb-0 flex flex-col space-y-4'>{children}</div>;
 };
 
 /**
@@ -24,7 +24,7 @@ export const Split: React.FC<React.PropsWithChildren> = (props) => {
  * @returns The SplitImage component is returning a div element with the className "grid grid-cols-2
  * items-start gap-4". The children of the component are rendered inside this div element.
  */
-export const SplitImage: React.FC<React.PropsWithChildren> = (props) => {
+export const SplitImage: React.FC<React.PropsWithChildren> = props => {
   const { children } = props;
-  return <div className="grid grid-cols-2 items-start gap-4">{children}</div>;
+  return <div className='grid grid-cols-2 items-start gap-4'>{children}</div>;
 };

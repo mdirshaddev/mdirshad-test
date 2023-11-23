@@ -1,4 +1,4 @@
-import { ReadTimeResults } from "reading-time";
+import { ReadTimeResults } from 'reading-time';
 
 export type BlogFrontmatter = {
   slug: string;
@@ -13,13 +13,13 @@ export type BlogFrontmatter = {
   lastUpdated?: string;
 };
 
-export type ContentType = "blog" | "shelf" | "projects";
+export type ContentType = 'blog' | 'shelf' | 'projects';
 
-export type PickFrontmatter<T extends ContentType> = T extends "blog"
+export type PickFrontmatter<T extends ContentType> = T extends 'blog'
   ? BlogFrontmatter
-  : T extends "shelf"
-  ? ShelfFrontmatter
-  : ProjectFrontmatter;
+  : T extends 'shelf'
+    ? ShelfFrontmatter
+    : ProjectFrontmatter;
 
 export type InjectedMeta = { views?: number; likes?: number };
 

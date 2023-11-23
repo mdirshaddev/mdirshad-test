@@ -1,8 +1,8 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from 'next/server';
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  console.log(request.headers.get("user-agent"));
+  console.log(request.headers.get('user-agent'));
   // console.log(request.headers.get("x-forwared-for")); // get IP address of user
   return NextResponse.next();
 }
@@ -19,6 +19,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - manifest.webmanifest (manifest file)
      */
-    "/((?!api|public|_next/static|_next/image|favicon.ico|manifest.webmanifest).*)",
-  ],
+    '/((?!api|public|_next/static|_next/image|favicon.ico|manifest.webmanifest).*)'
+  ]
 };

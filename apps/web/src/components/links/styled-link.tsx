@@ -1,22 +1,21 @@
-"use client";
+'use client';
 
-import { cx } from "class-variance-authority";
+import { cx } from 'class-variance-authority';
 
-import { NextLink, type NextLinkProps } from "./next-link";
+import { NextLink, type NextLinkProps } from './next-link';
 
-export const StyledLink: React.FC<NextLinkProps> = (props) => {
-  const { children, className = "", ...rest } = props;
+export const StyledLink: React.FC<NextLinkProps> = props => {
+  const { children, className = '', ...rest } = props;
   return (
     <NextLink
       {...rest}
       className={cx(
-        "animated-underline custom-link inline-flex items-center font-medium",
-        "focus:outline-none focus-visible:ring focus-visible:ring-[#facc15]",
-        "border-b border-dotted border-[#222] hover:border-black/0",
+        'animated-underline custom-link inline-flex items-center font-medium',
+        'focus:outline-none focus-visible:ring focus-visible:ring-[#facc15]',
+        'border-b border-dotted border-[#222] hover:border-black/0',
         className
-      )}
-    >
-      <span className="dark:bg-gradient-to-tr dark:from-[#fdd842] dark:to-[#facc15] dark:bg-clip-text dark:text-transparent">
+      )}>
+      <span className='dark:bg-gradient-to-tr dark:from-[#fdd842] dark:to-[#facc15] dark:bg-clip-text dark:text-transparent'>
         {children}
       </span>
     </NextLink>

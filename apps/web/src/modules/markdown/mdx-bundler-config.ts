@@ -1,8 +1,8 @@
-import { bundleMDX } from "mdx-bundler";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
+import { bundleMDX } from 'mdx-bundler';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
 /**
  * The `mdxConfig` function is an async function that takes a `source` string as input and returns an
@@ -22,27 +22,27 @@ export async function mdxBundlerConfig(source: string) {
           rehypeSlug,
           () =>
             rehypePrettyCode({
-              theme: "css-variables",
+              theme: 'css-variables'
             }),
           [
             rehypeAutolinkHeadings,
             {
               properties: {
-                className: ["hash-anchor"],
-              },
-            },
-          ],
+                className: ['hash-anchor']
+              }
+            }
+          ]
         ];
 
         return options;
       },
-      source,
+      source
     });
     return {
       code,
       errors,
       frontmatter,
-      matter,
+      matter
     };
   } catch (e) {
     // TODO: Sentry error reporting

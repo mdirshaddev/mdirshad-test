@@ -1,10 +1,10 @@
-import { promises, readFileSync } from "fs";
-import { join } from "path";
+import { promises, readFileSync } from 'fs';
+import { join } from 'path';
 
-import readingTime, { type ReadTimeResults } from "reading-time";
-import { type ContentType } from "src/types/frontmatters";
+import readingTime, { type ReadTimeResults } from 'reading-time';
+import { type ContentType } from 'src/types/frontmatters';
 
-import { mdxBundlerConfig } from "./mdx-bundler-config";
+import { mdxBundlerConfig } from './mdx-bundler-config';
 
 /**
  * The `MarkdownService` class provides methods for reading Markdown files, retrieving file lists, and
@@ -42,10 +42,10 @@ export class MarkdownService {
   > {
     const source = slug
       ? readFileSync(
-          join(process.cwd(), "src", "data", type, `${slug}.mdx`),
-          "utf8"
+          join(process.cwd(), 'src', 'data', type, `${slug}.mdx`),
+          'utf8'
         )
-      : readFileSync(join(process.cwd(), "src", "data", `${type}.mdx`), "utf8");
+      : readFileSync(join(process.cwd(), 'src', 'data', `${type}.mdx`), 'utf8');
 
     try {
       const mdx = await mdxBundlerConfig(source);
@@ -57,8 +57,8 @@ export class MarkdownService {
           readingTime: readingTime(source),
           slug: slug || null,
           wordCount: source.split(/\s+/gu).length,
-          ...extraFontMatter,
-        },
+          ...extraFontMatter
+        }
       };
     } catch (err) {
       console.log(err);
@@ -82,9 +82,7 @@ export class MarkdownService {
         if (item.isDirectory()) {
           files = [
             ...files,
-            ...((await this.getFileList(
-              `${dirName}/${item.name}`
-            )) as string[]),
+            ...((await this.getFileList(`${dirName}/${item.name}`)) as string[])
           ];
         } else {
           files.push(`${dirName}/${item.name}`);
@@ -106,15 +104,15 @@ export class MarkdownService {
    */
   async getFileSlugArray(type: ContentType) {
     try {
-      const filePath = join(process.cwd(), "src", "data", type);
+      const filePath = join(process.cwd(), 'src', 'data', type);
       let filesPathArray = await this.getFileList(filePath);
-      const slugArray = filesPathArray?.map((path) => {
+      const slugArray = filesPathArray?.map(path => {
         const slugName = path
-          .replace(filePath + "/", "")
-          .replace(".mdx", "")
-          .split("/");
+          .replace(filePath + '/', '')
+          .replace('.mdx', '')
+          .split('/');
         return {
-          slug: slugName,
+          slug: slugName
         };
       });
       return slugArray;

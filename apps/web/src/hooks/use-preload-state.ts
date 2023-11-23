@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { PreloadContext } from "src/contexts/preload-context";
+import { PreloadContext } from 'src/contexts/preload-context';
 
 /**
  * The usePreloadState function returns the boolean value from the PreloadContext.

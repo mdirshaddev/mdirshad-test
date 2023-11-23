@@ -1,17 +1,16 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useState } from "react";
+import Image from 'next/image';
+import { useState } from 'react';
 
-import { buildUrl } from "cloudinary-build-url";
-import Lightbox from "react-18-image-lightbox";
-import { type NextCloudinaryImgType } from "src/types/next-cloudinary";
-
-import { cx } from "class-variance-authority";
+import { cx } from 'class-variance-authority';
+import { buildUrl } from 'cloudinary-build-url';
+import Lightbox from 'react-18-image-lightbox';
+import { type NextCloudinaryImgType } from 'src/types/next-cloudinary';
 
 /* The code is defining a React functional component called `NextCloudinaryImg`. It takes in a set of
 props of type `NextCloudinaryImgType`. */
-export const NextCloudinaryImg: React.FC<NextCloudinaryImgType> = (props) => {
+export const NextCloudinaryImg: React.FC<NextCloudinaryImgType> = props => {
   const {
     publicId,
     height,
@@ -31,27 +30,27 @@ export const NextCloudinaryImg: React.FC<NextCloudinaryImgType> = (props) => {
 
   const urlBlurred = buildUrl(publicId, {
     cloud: {
-      cloudName: "mdirshaddev",
+      cloudName: 'mdirshaddev'
     },
     transformations: {
       effect: {
-        name: "blur:1000",
+        name: 'blur:1000'
       },
       quality: 1,
       rawTransformation: aspect
         ? `c_fill,ar_${aspect.width}:${aspect.height},w_${width}`
-        : undefined,
-    },
+        : undefined
+    }
   });
   const url = buildUrl(publicId, {
     cloud: {
-      cloudName: "mdirshaddev",
+      cloudName: 'mdirshaddev'
     },
     transformations: {
       rawTransformation: aspect
         ? `c_fill,ar_${aspect.width}:${aspect.height},w_${width}`
-        : undefined,
-    },
+        : undefined
+    }
   });
 
   const aspectRatio = aspect ? aspect.height / aspect.width : undefined;
@@ -62,30 +61,28 @@ export const NextCloudinaryImg: React.FC<NextCloudinaryImgType> = (props) => {
   return (
     <figure
       className={cx(className, {
-        "mx-auto w-full": mdx && +width <= 800,
-        "overflow-hidden rounded shadow dark:shadow-none": !noStyle,
+        'mx-auto w-full': mdx && +width <= 800,
+        'overflow-hidden rounded shadow dark:shadow-none': !noStyle
       })}
       style={{
         ...(mdx && +width <= 800 ? { maxWidth: width } : {}),
-        ...style,
+        ...style
       }}
-      {...rest}
-    >
+      {...rest}>
       <div
         style={{
-          cursor: preview ? "zoom-in" : "default",
+          cursor: preview ? 'zoom-in' : 'default',
           height: 0,
           paddingTop: aspectRatio
             ? `${aspectRatio * 100}%`
             : `${(+height / +width) * 100}%`,
-          position: "relative",
+          position: 'relative'
         }}
-        className="img-blur"
-        onClick={preview ? () => setIsOpen(true) : undefined}
-      >
+        className='img-blur'
+        onClick={preview ? () => setIsOpen(true) : undefined}>
         <style jsx>{`
           .img-blur::before {
-            content: "";
+            content: '';
             position: absolute;
             inset: 0;
             filter: blur(20px);
@@ -95,7 +92,7 @@ export const NextCloudinaryImg: React.FC<NextCloudinaryImgType> = (props) => {
             background-size: 100%;
           }
         `}</style>
-        <div className="absolute left-0 top-0">
+        <div className='absolute left-0 top-0'>
           <Image
             width={
               resizedToMaxWidth ? Math.min(+width, RESIZE_MAX_WIDTH) : width

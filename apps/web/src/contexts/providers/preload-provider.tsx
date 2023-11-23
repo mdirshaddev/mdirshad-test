@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { cx } from "class-variance-authority";
+import { cx } from 'class-variance-authority';
 
-import { PreloadContext } from "../preload-context";
+import { PreloadContext } from '../preload-context';
 
 /**
  * The PreloadProvider component is a React functional component that provides a preloading context and
@@ -34,8 +34,8 @@ export const PreloadProvider: React.FC<React.PropsWithChildren> = (
     <PreloadContext.Provider value={preloaded}>
       <div
         className={cx(
-          "fixed inset-0 flex items-center justify-center bg-background transition-opacity",
-          preloaded && "pointer-events-none opacity-0"
+          'fixed inset-0 flex items-center justify-center bg-background transition-opacity',
+          preloaded && 'pointer-events-none opacity-0'
         )}
       />
       {children}

@@ -1,9 +1,10 @@
-import { type JWT } from "next-auth/jwt";
-import { verify, sign } from "jsonwebtoken";
-import NextAuth, { type AuthOptions } from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { nextPrismaClient } from "src/modules/prisma/prisma-client";
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { sign, verify } from 'jsonwebtoken';
+import NextAuth, { type AuthOptions } from 'next-auth';
+import { type JWT } from 'next-auth/jwt';
+import GithubProvider from 'next-auth/providers/github';
+
+import { nextPrismaClient } from 'src/modules/prisma/prisma-client';
 
 export class NextAuthService {
   public constructor() {}
@@ -11,7 +12,7 @@ export class NextAuthService {
   public authOptions(): AuthOptions {
     return {
       adapter: PrismaAdapter(nextPrismaClient),
-      debug: process.env.NODE_ENV === "development",
+      debug: process.env.NODE_ENV === 'development',
       jwt: {
         async decode({ secret, token }) {
           // TODO: Role based control needs to be implemented here
@@ -19,21 +20,21 @@ export class NextAuthService {
         },
         async encode({ secret, token }) {
           // TODO: Role based control needs to be implemented here
-          return sign(token as object, secret, { algorithm: "HS256" });
-        },
+          return sign(token as object, secret, { algorithm: 'HS256' });
+        }
       },
       providers: [
         // TODO: In plan for future to add multiple providers
         GithubProvider({
           clientId: process.env.GITHUB_ID,
-          clientSecret: process.env.GITHUB_SECRET,
-        }),
+          clientSecret: process.env.GITHUB_SECRET
+        })
       ],
       secret: process.env.NEXTAUTH_SECRET,
-      session: { strategy: "jwt" },
+      session: { strategy: 'jwt' },
       theme: {
-        colorScheme: "auto",
-      },
+        colorScheme: 'auto'
+      }
     };
   }
 

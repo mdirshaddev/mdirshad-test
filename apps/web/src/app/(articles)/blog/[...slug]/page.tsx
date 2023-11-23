@@ -1,25 +1,22 @@
-import { type Metadata, type ResolvingMetadata } from "next";
+import { type Metadata, type ResolvingMetadata } from 'next';
 
-import { format } from "date-fns";
-import { ReadTimeResults } from "reading-time";
-
-import { Icons } from "src/configs/icons";
-import { cx } from "class-variance-authority";
-
-import { MarkdownService } from "src/modules/markdown/markdown.service";
-
-import { MDXComponent } from "src/modules/markdown/mdx-component";
-
-import { NextCloudinaryImg } from "src/components/images";
-
-import { TableOfContent } from "src/app/(articles)/blog/[...slug]/_components";
-
+import { cx } from 'class-variance-authority';
+import { format } from 'date-fns';
+import { ReadTimeResults } from 'reading-time';
+import { TableOfContent } from 'src/app/(articles)/blog/[...slug]/_components';
 import {
+  BlogStats,
   GiscusCommentBox,
   NextLink,
-  StyledLink,
-  BlogStats,
-} from "src/app/(articles)/blog/[...slug]/_components/_lazy-components";
+  StyledLink
+} from 'src/app/(articles)/blog/[...slug]/_components/_lazy-components';
+
+import { Icons } from 'src/configs/icons';
+
+import { NextCloudinaryImg } from 'src/components/images';
+
+import { MarkdownService } from 'src/modules/markdown/markdown.service';
+import { MDXComponent } from 'src/modules/markdown/mdx-component';
 
 type Props = {
   params: { slug: string };
@@ -45,7 +42,7 @@ export async function generateMetadata(
 
   return {
     description: blogPost?.frontmatter.description,
-    title: "Md Irshad - " + blogPost?.frontmatter.title,
+    title: 'Md Irshad - ' + blogPost?.frontmatter.title
   };
 }
 
@@ -55,7 +52,7 @@ export async function generateStaticParams(): Promise<
   }[]
 > {
   const markdownService = new MarkdownService();
-  const postSlug = (await markdownService.getFileSlugArray("blog")) as {
+  const postSlug = (await markdownService.getFileSlugArray('blog')) as {
     slug: Array<string>;
   }[];
   return postSlug;
@@ -63,7 +60,7 @@ export async function generateStaticParams(): Promise<
 
 async function getBlogPost({ slug }: { slug: string }) {
   const markdownService = new MarkdownService();
-  const posts = await markdownService.getFileBySlug("blog", slug);
+  const posts = await markdownService.getFileBySlug('blog', slug);
 
   if (!posts) {
     return null;
@@ -74,7 +71,7 @@ async function getBlogPost({ slug }: { slug: string }) {
 
 const Page: React.FC<Props> = async ({
   params,
-  searchParams,
+  searchParams
 }): Promise<JSX.Element> => {
   const blogMatter = await getBlogPost(params);
   const frontmatter = blogMatter?.frontmatter;
@@ -83,76 +80,74 @@ const Page: React.FC<Props> = async ({
   const COMMIT_HISTORY_LINK = `https://github.com/mdirshaddev/mdirshad/commits/main/src/contents/blog/${frontmatter?.slug}.mdx`;
   const GITHUB_EDIT_LINK = `https://github.com/mdirshaddev/mdirshad/blob/main/src/contents/blog/${frontmatter?.slug}.mdx`;
   return (
-    <main className="relative min-h-[calc(100vh-64px)]">
-      <section className="mx-auto max-w-[1400px] py-4">
-        <article className="px-4 lg:px-8">
+    <main className='relative min-h-[calc(100vh-64px)]'>
+      <section className='mx-auto max-w-[1400px] py-4'>
+        <article className='px-4 lg:px-8'>
           <NextCloudinaryImg
             publicId={`mdirshad/banner/${frontmatter?.banner}`}
             alt={`Banner for ${frontmatter?.slug} : ${frontmatter?.banner}`}
             width={1336}
             height={534.4}
             aspect={{ height: 2, width: 5 }}
-            className="select-none"
+            className='select-none'
           />
 
-          <h1 className="mt-4 text-center">{frontmatter?.title}</h1>
+          <h1 className='mt-4 text-center'>{frontmatter?.title}</h1>
 
-          <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-300">
-            Written on{" "}
+          <p className='mt-2 text-center text-sm text-gray-600 dark:text-gray-300'>
+            Written on{' '}
             {frontmatter?.publishedAt &&
-              format(new Date(frontmatter?.publishedAt), "MMMM dd, yyyy")}{" "}
+              format(new Date(frontmatter?.publishedAt), 'MMMM dd, yyyy')}{' '}
             by Md Irshad.
           </p>
 
           {frontmatter?.lastUpdated && (
-            <div className="mt-2 flex flex-wrap justify-center gap-2 text-center text-sm text-gray-700 dark:text-gray-200">
+            <div className='mt-2 flex flex-wrap justify-center gap-2 text-center text-sm text-gray-700 dark:text-gray-200'>
               <p>
-                Last updated{" "}
-                {format(new Date(frontmatter?.lastUpdated), "MMMM dd, yyyy")}.
+                Last updated{' '}
+                {format(new Date(frontmatter?.lastUpdated), 'MMMM dd, yyyy')}.
               </p>
               <NextLink
                 href={COMMIT_HISTORY_LINK}
                 className={cx(
-                  "inline-flex items-center gap-1 rounded-sm font-medium",
-                  "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-primary",
-                  "focus-visible:ring-primary-300 focus:outline-none focus-visible:ring"
-                )}
-              >
-                <Icons.history className="text-lg" />
+                  'inline-flex items-center gap-1 rounded-sm font-medium',
+                  'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-primary',
+                  'focus-visible:ring-primary-300 focus:outline-none focus-visible:ring'
+                )}>
+                <Icons.history className='text-lg' />
                 <span>See changes</span>
               </NextLink>
             </div>
           )}
-          <div className="lg:grid lg:grid-cols-[auto,auto] 2xl:grid-cols-[250px,800px,auto] lg:gap-8">
-            <aside className="hidden py-4 lg:block">
-              <div className="sticky top-24">
+          <div className='lg:grid lg:grid-cols-[auto,auto] 2xl:grid-cols-[250px,800px,auto] lg:gap-8'>
+            <aside className='hidden py-4 lg:block'>
+              <div className='sticky top-24'>
                 {frontmatter && <TableOfContent frontmatter={frontmatter} />}
-                <div className="flex items-center justify-center py-8"></div>
+                <div className='flex items-center justify-center py-8'></div>
               </div>
             </aside>
-            <div className="mdx prose mx-auto mt-4 w-full transition-colors dark:prose-invert">
+            <div className='mdx prose mx-auto mt-4 w-full transition-colors dark:prose-invert'>
               {code && <MDXComponent code={code} />}
             </div>
-            <aside className="hidden py-4 xl:block">
-              <div className="sticky top-24">
+            <aside className='hidden py-4 xl:block'>
+              <div className='sticky top-24'>
                 <BlogStats />
               </div>
             </aside>
           </div>
           {/* Comment box giscus */}
-          <figure className="mr-1">
+          <figure className='mr-1'>
             <GiscusCommentBox />
           </figure>
-          <div className="mt-8 flex flex-col items-start gap-4 md:flex-row-reverse md:justify-between">
+          <div className='mt-8 flex flex-col items-start gap-4 md:flex-row-reverse md:justify-between'>
             <StyledLink href={GITHUB_EDIT_LINK}>Edit this on GitHub</StyledLink>
             <StyledLink
-              href="/blog"
+              href='/blog'
               className={cx(
-                "inline-flex items-center gap-1 rounded-sm font-medium",
-                "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-primary",
-                "focus:outline-none focus-visible:ring focus-visible:ring-primary"
-              )}
-            >
+                'inline-flex items-center gap-1 rounded-sm font-medium',
+                'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-primary',
+                'focus:outline-none focus-visible:ring focus-visible:ring-primary'
+              )}>
               ← Back to blog
             </StyledLink>
           </div>

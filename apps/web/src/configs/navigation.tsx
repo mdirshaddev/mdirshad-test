@@ -1,120 +1,120 @@
 /* eslint-disable canonical/sort-keys */ // Not required to apply as the order we have defined for the ease
-"use client";
+'use client';
 
-import { Icons } from "./icons";
+import { Icons } from './icons';
 
 export type NavigtionConfig = typeof navigationConfig;
 
 // TODO: Shortcuts are yet to be added and need to be linked with command center
 export const navigationConfig = {
   blog: {
-    name: "Blog",
+    name: 'Blog',
     ShortcutIcon: Icons.directions.arrowUpRight,
     Icon: Icons.navigation.blog.icon,
     subnavigation: [
       {
-        name: "Posts",
-        description: "Hands-on, Tutorials and R&D ",
-        href: "/blog",
+        name: 'Posts',
+        description: 'Hands-on, Tutorials and R&D ',
+        href: '/blog',
         ShortcutIcon: Icons.directions.arrowUpRight,
         Icon: Icons.navigation.blog.posts,
-        external: false,
+        external: false
       },
       {
-        name: "Shelf",
-        description: "Personal Notion Notes",
-        href: "/shelf",
+        name: 'Shelf',
+        description: 'Personal Notion Notes',
+        href: '/shelf',
         ShortcutIcon: Icons.directions.arrowUpRight,
         Icon: Icons.navigation.blog.notes,
-        external: false,
+        external: false
       },
       {
-        name: "Templates",
-        description: "Project starter templates",
-        href: "https://github.com/mdirshaddev?tab=repositories&q=&type=template&language=&sort=stargazers",
+        name: 'Templates',
+        description: 'Project starter templates',
+        href: 'https://github.com/mdirshaddev?tab=repositories&q=&type=template&language=&sort=stargazers',
         ShortcutIcon: Icons.directions.arrowUpRight,
         Icon: Icons.navigation.blog.github,
-        external: true,
-      },
-    ],
+        external: true
+      }
+    ]
   },
   works: {
-    name: "Works",
+    name: 'Works',
     ShortcutIcon: Icons.directions.arrowUpRight,
     Icon: Icons.navigation.works.icon,
     subnavigation: [
       {
-        name: "Projects",
-        description: "Variety of projects",
-        href: "/projects",
+        name: 'Projects',
+        description: 'Variety of projects',
+        href: '/projects',
         ShortcutIcon: Icons.directions.arrowUpRight,
         Icon: Icons.navigation.works.projects,
-        external: false,
+        external: false
       },
       {
-        name: "CodeSandBox",
-        description: "Projects on CodeSandBox",
-        href: "https://codesandbox.io/u/mdirshaddev",
+        name: 'CodeSandBox',
+        description: 'Projects on CodeSandBox',
+        href: 'https://codesandbox.io/u/mdirshaddev',
         ShortcutIcon: Icons.directions.arrowUpRight,
         Icon: Icons.navigation.works.codesandbox,
-        external: true,
+        external: true
       },
       {
-        name: "CodePen",
-        description: "Projects on CodePen",
-        href: "https://codepen.io/mdirshaddev",
+        name: 'CodePen',
+        description: 'Projects on CodePen',
+        href: 'https://codepen.io/mdirshaddev',
         ShortcutIcon: Icons.directions.arrowUpRight,
         Icon: Icons.navigation.works.codepen,
-        external: true,
+        external: true
       },
       {
-        name: "Arduino",
-        description: "Projects on IoT",
-        href: "https://projecthub.arduino.cc/irshaddev",
+        name: 'Arduino',
+        description: 'Projects on IoT',
+        href: 'https://projecthub.arduino.cc/irshaddev',
         ShortcutIcon: Icons.directions.arrowUpRight,
         Icon: Icons.navigation.works.arduino,
-        external: true,
-      },
-    ],
+        external: true
+      }
+    ]
   },
   insights: {
-    name: "Insights",
+    name: 'Insights',
     ShortcutIcon: Icons.directions.arrowUpRight,
     Icon: Icons.navigation.insights.icon,
     subnavigation: [
       {
-        name: "Overview",
-        description: "Combined metrics",
-        href: "/dashboard",
+        name: 'Overview',
+        description: 'Combined metrics',
+        href: '/dashboard',
         ShortcutIcon: Icons.directions.arrowUpRight,
-        Icon: Icons.navigation.insights.dashboard,
+        Icon: Icons.navigation.insights.dashboard
       },
       {
-        name: "GitHub Dashboard",
-        description: "Personal github insights",
-        href: "/dashboard/github",
+        name: 'GitHub Dashboard',
+        description: 'Personal github insights',
+        href: '/dashboard/github',
         ShortcutIcon: Icons.directions.arrowUpRight,
-        Icon: Icons.navigation.insights.github,
+        Icon: Icons.navigation.insights.github
       },
       {
-        name: "Website Insights",
-        description: "Website metrics insight",
-        href: "/dashboard/website",
+        name: 'Website Insights',
+        description: 'Website metrics insight',
+        href: '/dashboard/website',
         ShortcutIcon: Icons.directions.arrowUpRight,
-        Icon: Icons.navigation.insights.website,
-      },
-    ],
+        Icon: Icons.navigation.insights.website
+      }
+    ]
   },
   guestbook: {
-    name: "Guestbook",
-    href: "/guestbook",
+    name: 'Guestbook',
+    href: '/guestbook',
     Icon: Icons.navigation.guestbook,
-    ShortcutIcon: Icons.directions.arrowUpRight,
+    ShortcutIcon: Icons.directions.arrowUpRight
   },
   about: {
-    name: "About",
-    href: "/about",
+    name: 'About',
+    href: '/about',
     Icon: Icons.navigation.about,
-    ShortcutIcon: Icons.directions.arrowUpRight,
-  },
+    ShortcutIcon: Icons.directions.arrowUpRight
+  }
 };

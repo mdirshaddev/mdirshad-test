@@ -7,7 +7,7 @@ export {
   type ToastProps,
   ToastProvider,
   ToastTitle,
-  ToastViewport,
-} from "./toast";
-export { Toaster } from "./toaster";
-export { reducer, toast, useToast } from "./use-toast";
+  ToastViewport
+} from './toast';
+export { Toaster } from './toaster';
+export { reducer, toast, useToast } from './use-toast';

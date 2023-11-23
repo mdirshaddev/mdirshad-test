@@ -1,2 +1,2 @@
-export { TableOfContent } from "./table-of-contents";
-export { BlogStats } from "./blog-stats";
+export { TableOfContent } from './table-of-contents';
+export { BlogStats } from './blog-stats';
